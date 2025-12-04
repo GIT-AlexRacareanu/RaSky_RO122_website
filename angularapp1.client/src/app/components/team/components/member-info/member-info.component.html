@@ -1,0 +1,15 @@
+<div>
+  <h2 class="header"
+      mat-dialog-title>{{data.first_Name}} {{data.last_Name}}</h2>
+  <mat-dialog-content class="content">
+    <div class="first">
+      <img class="member-img" src="../../../../../assets/img/members/{{data.photo_Url}}" />
+      <div class="member-desc">
+        {{data.description}}
+      </div>
+    </div>
+    <div class="member-role" *ngFor="let r of data.roles">
+      {{r.name}}
+    </div>
+  </mat-dialog-content>
+</div>

@@ -1,0 +1,28 @@
+.tab-list {
+  background-color: midnightblue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+
+.logo{
+    padding:0px 10px 0px 10px;
+    height:40px;
+    width:auto;
+}
+
+.tab-item
+{
+  text-align:center;
+  color:white;
+  padding:15px;
+  width:60px;
+  font-family:'Comic Sans MS';
+  font-size:12px;
+}
+
+.tab-item:hover{
+  opacity:70%;
+  cursor:pointer;
+}

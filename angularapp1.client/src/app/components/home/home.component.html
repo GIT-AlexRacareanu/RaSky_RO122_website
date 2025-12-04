@@ -1,0 +1,15 @@
+<div *ngIf="posts.length; else loading" fxLayoutAlign="start center" fxLayout="column">
+  <mat-card *ngFor="let post of posts" class="post">
+    <mat-card-header>
+      <div mat-card-avatar class="avatar"></div>
+      <mat-card-title>&#64;raskyrobotics</mat-card-title>
+    </mat-card-header>
+    <div [innerHtml]="post"></div>
+    <mat-card-content class="desc">
+      {{getDescription(post)}}
+    </mat-card-content>
+  </mat-card>
+</div>
+<ng-template #loading>
+  <mat-spinner class="loading-spinner"></mat-spinner>
+</ng-template>

@@ -1,0 +1,26 @@
+<div class="content" *ngIf="members.length > 0; else loading">
+  <div class="category">MENTORS</div>
+  <div class="member-card-container">
+    @for(m of mentor; track m.id)
+    {
+    <member-card [member]="m"></member-card>
+    }
+  </div>
+  <div class="category">LEADERS</div>
+  <div class="member-card-container">
+    @for(m of leader; track m.id)
+    {
+    <member-card [member]="m"></member-card>
+    }
+  </div>
+  <div class="category">MEMBERS</div>
+  <div class="member-card-container">
+    @for(m of member; track m.id)
+    {
+    <member-card [member]="m"></member-card>
+    }
+  </div>
+</div>
+<ng-template #loading class="loading-spinner">
+  <mat-spinner></mat-spinner>
+</ng-template>

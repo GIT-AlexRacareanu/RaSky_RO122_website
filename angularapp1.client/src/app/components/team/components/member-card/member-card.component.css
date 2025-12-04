@@ -1,0 +1,41 @@
+.member-card {
+  width: 150px;
+  height: 150px;
+  background-color: rebeccapurple;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  color: lightgray;
+}
+
+.member-card:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.member-image {
+  height:70px;
+  aspect-ratio: 1/1;
+  border:2px solid black;
+  border-radius: 100px;
+}
+
+.member-name {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  padding-top: 10px;
+  margin: 5px;
+  font-weight: 550;
+  font-size: 14px;
+}
+
+.member-role {
+  margin: 5px;
+  font-weight: 350;
+  font-size: 12px;
+}
+
+.start-year{
+  position:absolute;
+  right:10px;
+  font-size:13px
+}

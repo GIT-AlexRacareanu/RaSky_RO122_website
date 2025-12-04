@@ -1,0 +1,18 @@
+export enum AwardType {
+  JudgesChoice,
+  DivisionFinalist,
+  DivisionWinner,
+  ConferenceFinalist,
+  Compass,
+  Promote,
+  Control,
+  Motivate,
+  Design,
+  Innovate,
+  Connect,
+  Think,
+  TopRanked,
+  Inspire,
+  Winner,
+  Finalist,
+}

@@ -1,0 +1,7 @@
+<div class="tab-list">
+  <img class="logo" src="assets/img/team_logo.png" />
+  <div *ngFor="let route of routes"
+       class="tab-item"
+       (click)="nav(route)">{{route}}
+  </div>
+</div>

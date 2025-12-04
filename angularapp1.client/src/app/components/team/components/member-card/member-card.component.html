@@ -1,0 +1,13 @@
+<mat-card class="member-card"
+          (click)="openDialog(member)">
+  <mat-card-header>
+    <div class="start-year">{{member.enrollment_Time}}</div>
+  </mat-card-header>
+  <mat-card-content>
+    <img src="assets/img/members/{{member.photo_Url}}"
+         alt="member"
+         class="member-image">
+    <div class="member-name">{{member.first_Name}} {{member.last_Name}}</div>
+    <div *ngFor="let r of member.roles" class="member-role">{{r.name}}</div>
+  </mat-card-content>
+</mat-card>

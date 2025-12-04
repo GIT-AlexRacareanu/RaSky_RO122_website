@@ -1,0 +1,145 @@
+<div class="content" *ngIf="team!=null">
+  <mat-card class="team-info">
+    <div fxLayout="row">
+      <div class="team-name">{{team.name}}</div>
+      <div class="team-number">#{{team.number}}</div>
+    </div>
+    <div class="team-info-item">
+      <mat-icon>location_pin</mat-icon>
+      <div class="location">
+        {{team.location.city}},
+        {{team.location.state}},
+        {{team.location.country}}
+      </div>
+    </div>
+    <div class="team-info-item">
+      <mat-icon>business</mat-icon>
+      {{team.schoolName}}
+    </div>
+    <div class="team-info-item">
+      <mat-icon>cake</mat-icon>
+      Rookie Year: {{team.rookieYear}}
+    </div>
+  </mat-card>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field class="year-selector">
+      <mat-select placeholder="2025" class="selected-item"
+                  (selectionChange)="onSeasonChange($event)">
+        @for(year of years; track year){
+        <mat-option [value]="year">{{year}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-card *ngIf="team.quickStats" class="quickstats">
+    <mat-card-title class="event-name">Quickstats</mat-card-title>
+    <table class="quickstats-table">
+      <thead>
+        <tr class="header-row">
+          <td class="first-column"></td>
+          <td>Total NP</td>
+          <td>Auto</td>
+          <td>Teleop</td>
+          <td>Endgame</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="first-column">Best OPR</td>
+          <td>{{ team.quickStats.tot.value.toFixed(2) }}</td>
+          <td>{{ team.quickStats.auto.value.toFixed(2) }}</td>
+          <td>{{ team.quickStats.dc.value.toFixed(2) }}</td>
+          <td>{{ team.quickStats.eg.value.toFixed(2) }}</td>
+        </tr>
+        <tr>
+          <td class="first-column">Rank</td>
+          <td>{{ toRank(team.quickStats.tot.rank)}}</td>
+          <td>{{ toRank(team.quickStats.auto.rank) }}</td>
+          <td>{{ toRank(team.quickStats.dc.rank) }}</td>
+          <td>{{ toRank(team.quickStats.eg.rank) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+  <div *ngIf="team.quickStats==null" class="no-info">no data found!</div>
+  <div class="events">
+    @for(event of team.events; track event){
+    <mat-expansion-panel class="event-card"
+                         [expanded]="true">
+      <mat-expansion-panel-header class="event-info">
+        <mat-panel-title>
+          <div class="event-info">
+            <div class="event-name">{{event.event.name}}</div>
+            <div class="location">
+              <mat-icon>location_pin</mat-icon>
+              <div class="event-location">
+                {{event.event.location.city}},
+                {{event.event.location.state}},
+                {{event.event.location.country}}
+              </div>
+            </div>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="event-info">
+        W-L-T: {{event.stats.wins}}-{{event.stats.losses}}-{{event.stats.ties}}
+      </div>
+      <table mat-table [dataSource]="event.matches" class="matches-table">
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef> Match </th>
+          <td mat-cell *matCellDef="let element"> Q-{{element.match.matchNum}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="score">
+          <th mat-header-cell *matHeaderCellDef> Score </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.match.scores.blue.totalPoints}}
+            -
+            {{element.match.scores.red.totalPoints}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="blueAlliance">
+          <th mat-header-cell *matHeaderCellDef> Blue Alliance </th>
+          <td mat-cell *matCellDef="let element">
+            <div fxLayout="row">
+              <div *ngFor="let team of element.match.teams; let i = index">
+                <div *ngIf="i < element.match.teams.length / 2" class="alliance-number" title="{{team.team.name}}">
+                  {{team.team.number}}
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="redAlliance">
+          <th mat-header-cell *matHeaderCellDef> Red Alliance </th>
+          <td mat-cell *matCellDef="let element">
+            <div fxLayout="row" class="alliance-numbers">
+              <div *ngFor="let team of element.match.teams; let i = index">
+                <div *ngIf="i >= element.match.teams.length / 2" class="alliance-number">
+                  {{team.team.number}}
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <tr mat-row
+            *matRowDef="let row; let i = index; columns: displayedColumns;"
+            [class.even-row]="i % 2 === 0"
+            [class.odd-row]="i % 2 === 1">
+        </tr>
+      </table>
+      <div *ngFor="let award of event.awards" class="awards">
+        <div class="trophy-icon" [style.background-color]="rankColor(award.placement)">
+        </div>
+        <div [style.color]="rankColor(award.placement)">
+          {{award.type}} Award {{toRank(award.placement)}} place
+        </div>
+      </div>
+    </mat-expansion-panel>
+    }
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.header{
+    color:white;
+    background-color:royalblue;
+}
+
+.content{
+    margin-top:20px;
+}
+
+.first{
+  display:flex;
+  flex-direction:row;
+  column-gap:20px;
+}
+
+.member-img{
+    width:250px;
+    height:auto;
+    border-radius:20px;
+}
+
+.member-desc{
+    
+}
+
+.member-role{
+    font-weight:800;
+    text-align:right;
+}

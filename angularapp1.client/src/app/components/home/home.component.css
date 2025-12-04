@@ -1,0 +1,27 @@
+.post{
+  margin:40px;
+  background-color:#060e40;
+  color:white;
+  width:80%;
+  max-width:1200px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0);
+}
+
+::ng-deep .post img {
+  width: 100%;
+  max-height:fit-content;
+}
+
+.avatar {
+  background-image: url('/assets/img/team_logo.png');
+  background-size: cover;
+  border: 1px solid white;
+}
+
+.desc {
+    margin:10px;
+}
+
+::ng-deep .mat-mdc-progress-spinner circle {
+  stroke: #3a34b6 !important;
+}

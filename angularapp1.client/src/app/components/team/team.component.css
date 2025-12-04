@@ -1,0 +1,17 @@
+.content{
+    display:flex;
+    flex-direction:column;
+}
+.category{
+  padding:10px;
+  font-size:30px;
+  font-weight:400;
+  color:white;
+}
+.member-card-container {
+  padding:10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
